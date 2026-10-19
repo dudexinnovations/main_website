@@ -1,0 +1,116 @@
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.testimonials-header {
+  max-width: 720px;
+  margin: 0 auto 56px auto;
+}
+
+.testimonials-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(164, 124, 84, 0.08);
+  border: 1px solid rgba(164, 124, 84, 0.25);
+  color: #7C4E26;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.testimonials-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.testimonials-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #666666;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.testimonial-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(197, 160, 122, 0.45);
+  box-shadow: 0 16px 36px -12px rgba(164, 124, 84, 0.12);
+  transform: translateY(-2px);
+}
+
+.testimonial-quote-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(164, 124, 84, 0.1);
+  color: #A47C54;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.testimonial-quote {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #333333;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.testimonial-author-block {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.testimonial-client-todo {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #7C4E26;
+}
+
+.testimonial-role-todo {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #4A4A4A;
+}
+
+.testimonial-org-todo {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.775rem;
+  color: #4A4A4A;
+}

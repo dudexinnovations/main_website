@@ -1,0 +1,200 @@
+/* Home Page - Dark Theme (Charcoal #1A1A1A / #121212, Off-White Text, Bronze #A47C54 / #C5A07A) */
+
+.home-page-dark {
+  background-color: #121212;
+  color: #FAFAFA;
+  overflow-x: hidden;
+}
+
+/* 1. NEW HERO SECTION */
+.home-hero-dark {
+  min-height: 84vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 130px;
+  padding-bottom: 90px;
+  background: radial-gradient(circle at 50% 30%, rgba(164, 124, 84, 0.08) 0%, transparent 60%), #121212;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle CSS-only bronze line animation background */
+.hero-bronze-line-ambient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bronze-svg {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  height: 90%;
+  max-height: 520px;
+}
+
+.hero-bronze-line-path {
+  filter: drop-shadow(0 0 14px rgba(197, 160, 122, 0.35));
+  animation: bronzeLineDrift 16s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+@keyframes bronzeLineDrift {
+  0% {
+    transform: translateY(-10px) scaleY(0.95);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(12px) scaleY(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-6px) scaleY(0.98);
+    opacity: 0.5;
+  }
+}
+
+.hero-content-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero-text-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Max 8 words headline */
+.hero-compact-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+/* One line of sub-text (max 12 words) */
+.hero-compact-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba(250, 250, 250, 0.72);
+  max-width: 720px;
+  margin: 0 auto 36px auto;
+}
+
+/* One button: "Let's talk" */
+.hero-action-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-talk-btn {
+  padding: 15px 42px !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 22px rgba(164, 124, 84, 0.35);
+  transition: all 0.25s ease;
+}
+
+.hero-talk-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(164, 124, 84, 0.5);
+}
+
+/* 2. WORK SECTION */
+.home-work-dark {
+  padding: 90px 0;
+  background-color: #141414;
+  border-top: 1px solid rgba(197, 160, 122, 0.15);
+  border-bottom: 1px solid rgba(197, 160, 122, 0.15);
+}
+
+.section-head-dark {
+  max-width: 680px;
+  margin: 0 auto 52px auto;
+}
+
+.section-eyebrow-dark {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #C5A07A;
+  background: rgba(164, 124, 84, 0.1);
+  border: 1px solid rgba(197, 160, 122, 0.25);
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.section-title-dark {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-subtitle-dark {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 250, 0.65);
+}
+
+/* 3. WHAT WE DO: BENTO GRID SECTION */
+.home-capabilities-dark {
+  background-color: #121212;
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bronze-line-path {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.55 !important;
+  }
+
+  .hero-talk-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-hero-dark {
+    min-height: 72vh;
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+
+  .hero-compact-subtitle {
+    margin-bottom: 28px;
+  }
+
+  .hero-talk-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .home-work-dark {
+    padding: 60px 0;
+  }
+}

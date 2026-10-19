@@ -1,0 +1,431 @@
+/* Where You Could Be - Section Styling */
+
+.where-you-could-be-section {
+  padding: 90px 0 100px 0;
+  background-color: #161616;
+  border-top: 1px solid rgba(197, 160, 122, 0.15);
+  border-bottom: 1px solid rgba(197, 160, 122, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background ambient warmth */
+.where-you-could-be-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 380px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(164, 124, 84, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.where-header {
+  max-width: 680px;
+  margin: 0 auto 44px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.where-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(164, 124, 84, 0.1);
+  border: 1px solid rgba(197, 160, 122, 0.25);
+  color: #C5A07A;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.where-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.where-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 250, 0.65);
+}
+
+/* 1. GOAL CHIPS BAR */
+.goal-chips-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 2;
+}
+
+.goal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: #1C1C1C;
+  border: 1px solid rgba(197, 160, 122, 0.22);
+  border-radius: 999px;
+  color: rgba(250, 250, 250, 0.78);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.goal-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(197, 160, 122, 0.35);
+  transition: all 0.25s ease;
+}
+
+.goal-chip:hover {
+  background: #222222;
+  border-color: rgba(197, 160, 122, 0.45);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.goal-chip.active {
+  background: rgba(164, 124, 84, 0.18);
+  border-color: #C5A07A;
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(164, 124, 84, 0.25);
+}
+
+.goal-chip.active .goal-chip-dot {
+  background-color: #C5A07A;
+  box-shadow: 0 0 8px #C5A07A;
+}
+
+/* 2. PATH DISPLAY WRAP */
+.path-display-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.path-track-container {
+  position: relative;
+  padding: 30px 20px 48px 20px;
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid rgba(197, 160, 122, 0.18);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Horizontal line track for desktop */
+.path-line-track {
+  position: absolute;
+  top: 54px;
+  left: 9%;
+  right: 9%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 1;
+}
+
+.path-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #A47C54 0%, #C5A07A 50%, #E6CAAB 100%);
+  box-shadow: 0 0 10px rgba(197, 160, 122, 0.6);
+}
+
+.path-lighting-active {
+  animation: pathLightSweep 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes pathLightSweep {
+  0% {
+    width: 0%;
+    opacity: 0.3;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Stops container */
+.path-stops-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.path-stop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Node indicator */
+.stop-node-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.stop-node-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #181818;
+  border: 2px solid #C5A07A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(197, 160, 122, 0.35);
+  transition: all 0.3s ease;
+}
+
+.stop-node-core {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E6CAAB 0%, #C5A07A 50%, #A47C54 100%);
+  box-shadow: 0 0 8px rgba(197, 160, 122, 0.7);
+}
+
+.stop-index-pill {
+  position: absolute;
+  bottom: -9px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #C5A07A;
+  background: #141414;
+  border: 1px solid rgba(197, 160, 122, 0.35);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+/* Stop content & labels */
+.stop-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6px;
+}
+
+.stop-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.stop-label-wrap {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stop-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(250, 250, 250, 0.72);
+  margin: 0;
+  animation: labelFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes labelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. CTA BUTTON AT THE END */
+.path-action-wrap {
+  margin-top: 40px;
+}
+
+.path-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(164, 124, 84, 0.3);
+  transition: all 0.25s ease;
+}
+
+.path-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(164, 124, 84, 0.48);
+}
+
+/* MOBILE VERTICAL PATH LAYOUT (<= 768px) */
+@media (max-width: 768px) {
+  .where-you-could-be-section {
+    padding: 60px 0 70px 0;
+  }
+
+  .where-header {
+    margin-bottom: 32px;
+  }
+
+  .goal-chips-bar {
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .goal-chip {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+
+  .path-track-container {
+    padding: 32px 18px 36px 18px;
+  }
+
+  /* Connector line runs vertically down from top node to bottom node */
+  .path-line-track {
+    top: 50px;
+    bottom: 50px;
+    left: 41px;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+
+  .path-line-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #A47C54 0%, #C5A07A 50%, #E6CAAB 100%);
+  }
+
+  @keyframes pathLightSweep {
+    0% {
+      height: 0%;
+      opacity: 0.3;
+    }
+    100% {
+      height: 100%;
+      opacity: 1;
+    }
+  }
+
+  /* List stacks vertically */
+  .path-stops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .path-stop-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 20px;
+  }
+
+  .stop-node-wrap {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .stop-node-ring {
+    width: 44px;
+    height: 44px;
+  }
+
+  .stop-node-core {
+    width: 12px;
+    height: 12px;
+  }
+
+  .stop-content {
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .stop-title {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+  }
+
+  .stop-label-wrap {
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .stop-label {
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  .path-action-wrap {
+    margin-top: 32px;
+  }
+
+  .path-start-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .path-lighting-active {
+    animation: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1 !important;
+  }
+
+  .stop-label {
+    animation: none !important;
+  }
+
+  .goal-chip,
+  .path-start-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,82 @@
+/* Floating WhatsApp Button - Bronze Theme */
+
+.floating-whatsapp-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9990;
+}
+
+.floating-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 22, 22, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 160, 122, 0.45);
+  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.65), 0 0 16px rgba(164, 124, 84, 0.25);
+  color: #FFFFFF;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.floating-whatsapp-btn:hover {
+  background: #1F1914;
+  border-color: #C5A07A;
+  box-shadow: 0 14px 34px -6px rgba(0, 0, 0, 0.75), 0 0 22px rgba(197, 160, 122, 0.45);
+  transform: translateY(-2px);
+  color: #C5A07A;
+}
+
+.wa-icon-glow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa-icon-bronze {
+  color: #C5A07A;
+  transition: color 0.25s ease;
+}
+
+.floating-whatsapp-btn:hover .wa-icon-bronze {
+  color: #E6CAAB;
+}
+
+.wa-text {
+  color: #FFFFFF;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.floating-whatsapp-btn:hover .wa-text {
+  color: #C5A07A;
+}
+
+@media (max-width: 640px) {
+  .floating-whatsapp-container {
+    bottom: 18px;
+    right: 18px;
+  }
+
+  .floating-whatsapp-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-whatsapp-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}

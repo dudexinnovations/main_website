@@ -1,0 +1,144 @@
+/* Internships Page - Quiet Luxury Dark Theme */
+
+.internships-page-dark {
+  padding-top: 130px;
+  padding-bottom: 100px;
+  min-height: calc(100vh - 80px);
+  background-color: #121212;
+  color: #FAFAFA;
+  display: flex;
+  align-items: center;
+}
+
+.internships-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.internships-header {
+  margin-bottom: 40px;
+}
+
+.internships-eyebrow {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #C5A07A;
+  background: rgba(164, 124, 84, 0.1);
+  border: 1px solid rgba(197, 160, 122, 0.25);
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.internships-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 4.4vw, 3.2rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.internships-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(250, 250, 250, 0.7);
+  line-height: 1.6;
+}
+
+/* 3 One-Line Benefits Card */
+.internships-benefits-card {
+  background: #171717;
+  border: 1px solid rgba(197, 160, 122, 0.25);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.benefit-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(164, 124, 84, 0.15);
+  border: 1px solid rgba(197, 160, 122, 0.35);
+  color: #C5A07A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #F0F0F0;
+  line-height: 1.45;
+}
+
+/* Action button */
+.internships-action {
+  display: flex;
+  justify-content: center;
+}
+
+.internships-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 44px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 22px rgba(164, 124, 84, 0.35);
+  transition: all 0.25s ease;
+}
+
+.internships-apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(164, 124, 84, 0.5);
+}
+
+@media (max-width: 640px) {
+  .internships-page-dark {
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+
+  .internships-benefits-card {
+    padding: 22px 20px;
+    margin-bottom: 28px;
+  }
+
+  .benefits-list {
+    gap: 14px;
+  }
+
+  .benefit-text {
+    font-size: 0.92rem;
+  }
+
+  .internships-apply-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

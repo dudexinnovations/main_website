@@ -1,0 +1,450 @@
+/* Why Online - Scroll-Driven Visual Story */
+
+.why-online-page {
+  background-color: #121212;
+  color: #FAFAFA;
+  position: relative;
+}
+
+/* 5-Screen native scroll track */
+.why-scroll-track {
+  height: 420vh;
+  position: relative;
+}
+
+.why-scroll-track.reduced-motion-track {
+  height: 100vh;
+  min-height: 700px;
+}
+
+/* Full-screen sticky stage */
+.why-sticky-stage {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #121212;
+  z-index: 5;
+}
+
+/* Ambient glow in stage center */
+.why-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  height: 720px;
+  max-width: 90vw;
+  max-height: 90vw;
+  background: radial-gradient(circle, rgba(164, 124, 84, 0.22) 0%, rgba(197, 160, 122, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* ========================================================== */
+/* TOP HUD: HEADLINES & PROGRESS PIP INDICATORS */
+/* ========================================================== */
+.why-hud-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 900px;
+  padding-top: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.why-headline-box {
+  position: absolute;
+  top: 105px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.why-story-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Progress Pips (1 to 5) */
+.why-pills-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 68px;
+  padding: 6px 14px;
+  background: rgba(26, 26, 26, 0.7);
+  border: 1px solid rgba(197, 160, 122, 0.25);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.progress-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.progress-pip.completed {
+  background-color: #A47C54;
+  box-shadow: 0 0 6px rgba(164, 124, 84, 0.5);
+}
+
+.progress-pip.active {
+  width: 18px;
+  border-radius: 999px;
+  background-color: #C5A07A;
+  box-shadow: 0 0 10px rgba(197, 160, 122, 0.8);
+}
+
+/* ========================================================== */
+/* SVG VISUAL STAGE & NETWORK CANVAS */
+/* ========================================================== */
+.why-svg-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+  padding: 0 16px;
+}
+
+.why-network-svg {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 230px);
+  overflow: visible;
+  user-select: none;
+}
+
+/* Network Group transform */
+.master-network-group {
+  transition: transform 0.2s ease-out;
+}
+
+/* Connecting Lines */
+.network-line {
+  stroke-linecap: round;
+}
+
+.primary-line {
+  stroke: #C5A07A;
+  stroke-width: 2.2;
+  stroke-opacity: 0.75;
+  filter: url(#lineGlowFilter);
+}
+
+.secondary-line {
+  stroke: rgba(197, 160, 122, 0.42);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 4;
+}
+
+.customer-line {
+  stroke: rgba(197, 160, 122, 0.48);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
+}
+
+/* Central Node */
+.central-badge-bg {
+  fill: #1C1C1C;
+  stroke: #C5A07A;
+  stroke-width: 2.5;
+  box-shadow: 0 0 20px rgba(197, 160, 122, 0.5);
+}
+
+.central-dot-pip {
+  cursor: default;
+}
+
+.central-beacon-outer {
+  fill: none;
+  stroke: rgba(197, 160, 122, 0.22);
+  stroke-width: 1.5;
+  animation: beaconPulse 3.6s infinite ease-out;
+  transform-origin: center center;
+}
+
+.central-beacon-inner {
+  fill: none;
+  stroke: rgba(197, 160, 122, 0.38);
+  stroke-width: 1.5;
+  animation: beaconPulse 3.6s infinite ease-out 1.2s;
+  transform-origin: center center;
+}
+
+@keyframes beaconPulse {
+  0% {
+    r: 24;
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    r: 54;
+    opacity: 0;
+  }
+}
+
+.central-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  fill: #FFFFFF;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.9));
+}
+
+/* Ecosystem Nodes */
+.node-halo {
+  fill: none;
+  stroke: rgba(197, 160, 122, 0.28);
+  stroke-width: 1.5;
+}
+
+.node-body {
+  fill: #1A1A1A;
+  stroke: #C5A07A;
+  stroke-width: 2;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+}
+
+.node-core-pip {
+  fill: #E6CAAB;
+}
+
+.node-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  fill: rgba(250, 250, 250, 0.9);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9));
+}
+
+/* Customer Nodes */
+.customer-circle {
+  fill: #161616;
+  stroke: rgba(197, 160, 122, 0.6);
+  stroke-width: 1.5;
+}
+
+.customer-pip {
+  fill: #FFFFFF;
+}
+
+.customer-text {
+  font-size: 12px;
+  font-weight: 500;
+  fill: rgba(250, 250, 250, 0.75);
+}
+
+/* Pulses ("Order" & "Enquiry") */
+.pulse-pill {
+  fill: #1E1812;
+  stroke: #C5A07A;
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 8px rgba(197, 160, 122, 0.6));
+}
+
+.pulse-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  fill: #FFFFFF;
+}
+
+/* ========================================================== */
+/* BOTTOM HUD: CTA BUTTON & SCROLL PROMPT */
+/* ========================================================== */
+.why-hud-footer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 600px;
+  padding-bottom: 48px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-action-box {
+  position: absolute;
+  bottom: 48px;
+  display: flex;
+  justify-content: center;
+  will-change: transform, opacity;
+  z-index: 2;
+}
+
+.why-grow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 38px !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 22px rgba(164, 124, 84, 0.35);
+  transition: all 0.25s ease;
+}
+
+.why-grow-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(164, 124, 84, 0.5);
+}
+
+/* Gentle scroll prompt */
+.why-scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+.scroll-hint-bar {
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(180deg, #C5A07A 0%, transparent 100%);
+  animation: scrollBob 2s infinite ease-in-out;
+}
+
+@keyframes scrollBob {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+.scroll-hint-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(197, 160, 122, 0.85);
+}
+
+/* ========================================================== */
+/* RESPONSIVE & MOBILE DESIGN */
+/* ========================================================== */
+@media (max-width: 768px) {
+  .why-hud-header {
+    padding-top: 85px;
+  }
+
+  .why-headline-box {
+    top: 85px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .why-story-headline {
+    font-size: clamp(1.7rem, 6.2vw, 2.3rem);
+  }
+
+  .why-pills-progress {
+    margin-top: 56px;
+    padding: 5px 12px;
+  }
+
+  .why-svg-wrapper {
+    padding: 0 8px;
+  }
+
+  .why-network-svg {
+    max-height: calc(100vh - 200px);
+  }
+
+  /* Keep SVG labels clear on mobile */
+  .central-label {
+    font-size: 17px;
+  }
+
+  .node-label {
+    font-size: 14.5px;
+  }
+
+  .customer-text {
+    font-size: 13px;
+  }
+
+  .why-hud-footer {
+    padding-bottom: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 72px;
+  }
+
+  .why-action-box {
+    bottom: 24px;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .why-scroll-hint {
+    bottom: 24px;
+  }
+
+  .why-grow-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
+/* ========================================================== */
+/* REDUCED MOTION SAFETY */
+/* ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .central-beacon-outer,
+  .central-beacon-inner,
+  .scroll-hint-bar {
+    animation: none !important;
+  }
+
+  .why-grow-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}
