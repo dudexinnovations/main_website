@@ -1,0 +1,3 @@
+# Cloudflare Pages SPA Routing Rewrite
+# Serves index.html for all subroutes with HTTP 200 so React Router handles client-side routing
+/*    /index.html   200
